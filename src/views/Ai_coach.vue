@@ -31,9 +31,9 @@ function renderLoop() {
   let startTimeMs = performance.now();
 
   canvasElement.style.height = videoHeight;
-  video.style.height = videoHeight;
+  // video.style.height = videoHeight;
   canvasElement.style.width = videoWidth;
-  video.style.width = videoWidth;
+  // video.style.width = videoWidth;
   if (video.currentTime !== lastVideoTime.value) {
     const poseLandmarkerResult = poseLandmarker.detectForVideo(video, startTimeMs, (result) => {
       // console.log(result)
