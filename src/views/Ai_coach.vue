@@ -13,11 +13,14 @@ const webcam_stream = ref(null)
 const output_canvas = ref(null)
 const lastVideoTime = ref(0)
 let poseLandmarker = null;
-const videoHeight = "720px";
-const videoWidth = "1280px";
+var videoHeight = "720px";
+var videoWidth = "1280px";
 
 
 function renderLoop() {
+  var divElement = document.getElementById("video");
+  videoWidth = divElement.offsetWidth+'px';
+  videoHeight = divElement.offsetHeight+'px';
 
   const video = webcam_stream.value.video
 
