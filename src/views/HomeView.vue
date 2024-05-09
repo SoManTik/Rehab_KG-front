@@ -5,7 +5,7 @@ import { RouterLink,useRoute, useLink ,useRouter} from 'vue-router'
 const router = useRouter();
 const route = useRoute();
 
-var booking = ref('ff')
+var booking = ref('')
 
 
 const getBooking = async function () {
@@ -27,6 +27,6 @@ onMounted(async () => {
 <template>
   <main>
    {{ booking }}
-   vvfvf
+   
   </main>
 </template>
