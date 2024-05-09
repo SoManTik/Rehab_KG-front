@@ -13,14 +13,14 @@ const webcam_stream = ref(null)
 const output_canvas = ref(null)
 const lastVideoTime = ref(0)
 let poseLandmarker = null;
-var videoHeight = "720px";
-var videoWidth = "1280px";
+var videoHeight = "";
+var videoWidth = "";
 
 
 function renderLoop() {
   var divElement = document.getElementById("video");
-  videoWidth = divElement.offsetWidth+'px';
-  videoHeight = divElement.offsetHeight+'px';
+  videoWidth = divElement.offsetWidth + 'px';
+  videoHeight = divElement.offsetHeight + 'px';
 
   const video = webcam_stream.value.video
 
@@ -81,7 +81,7 @@ onMounted(async () => {
 
 })
 
-var is_start_teaching_video = ref(true) ;
+var is_start_teaching_video = ref(true);
 function start_teaching_video() {
   is_start_teaching_video.value = true
 }
@@ -98,36 +98,47 @@ function start_exercise() {
 
 
     <div class="container">
+
       <div class="row">
-        <div class="col-12" style="margin-top: 1%;" v-if="is_start_teaching_video==false">
-          <camera crossOrigin="anonymous" playsinline ref="webcam_stream" id="video" class=""
-            style="width: 1280; height: 720; position: absolute;   border-radius: 50%;" autoplay @started="renderLoop">
+
+        <div class="col-11" style="margin-top: 1%;" v-if="is_start_teaching_video == false">
+          <camera crossOrigin="anonymous" playsinline ref="webcam_stream" id="video" class="" autoplay
+            @started="renderLoop">
           </camera>
           <canvas class="output_canvas" ref="output_canvas" id="output_canvas" width="1280" height="720"
             style="position: absolute; left: left; top: 0px;">
           </canvas>
         </div>
-    
-          <iframe style="margin-top: 1%;"  v-if="is_start_teaching_video== true" class="col-12" width="1280" height="720" src="https://www.youtube.com/embed/KNfqxl7jkiU"></iframe>
+
+        <iframe style="margin-top: 1%;" v-if="is_start_teaching_video == true" class="col-12" width="1280" height="720"
+          src="https://www.youtube.com/embed/KNfqxl7jkiU"></iframe>
 
 
       </div>
-      <div>
-        <button type="button" class="btn btn-secondary" @click="start_teaching_video()">Teaching Video</button>
-        <button type="button" class="btn btn-secondary" @click="start_exercise()">Teaching Video</button>
-        <button type="button" class="btn btn-secondary" @click="start_teaching_video()">Teaching Video</button>
-        <button type="button" class="btn btn-secondary" @click="start_exercise()">Teaching Video</button>
-        <button type="button" class="btn btn-secondary" @click="start_teaching_video()">Teaching Video</button>
-        <button type="button" class="btn btn-secondary" @click="start_exercise()">Teaching Video</button>
-        <button type="button" class="btn btn-secondary" @click="start_teaching_video()">Teaching Video</button>
-        <button type="button" class="btn btn-secondary" @click="start_exercise()">Teaching Video</button>
-        <button type="button" class="btn btn-secondary" @click="start_teaching_video()">Teaching Video</button>
-        <button type="button" class="btn btn-secondary" @click="start_exercise()">Teaching Video</button>
-        <button type="button" class="btn btn-secondary" @click="start_teaching_video()">Teaching Video</button>
-        <button type="button" class="btn btn-secondary" @click="start_exercise()">Teaching Video</button>
-        <button type="button" class="btn btn-secondary" @click="start_teaching_video()">Teaching Video</button>
-        <button type="button" class="btn btn-secondary" @click="start_exercise()">Teaching Video</button>
+      <div style="margin-top: 1%;" class="row">
+        <div class="d-grid gap-2 d-md-block">
+          <a href="/"><button class="btn btn-primary" type="button">
+            < Back</button></a>
+
+              <div class="btn-group" role="group" aria-label="Basic radio toggle button group" style="margin-left: 1%;">
+                <input @click="start_teaching_video()" type="radio" class="btn-check" name="btnradio" id="btnradio1"
+                  autocomplete="off" checked>
+                <label class="btn btn-outline-primary" for="btnradio1">Teaching Video</label>
+
+                <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+                <label class="btn btn-outline-primary" for="btnradio2" @click="start_exercise()">Start</label>
+
+                <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
+                <label class="btn btn-outline-primary" for="btnradio3">Pause</label>
+
+                <input type="radio" class="btn-check" name="btnradio" id="btnradio4" autocomplete="off">
+                <label class="btn btn-outline-primary" for="btnradio4">Restart</label>
+              </div>
+        </div>
+
       </div>
+
+
 
     </div>
 
