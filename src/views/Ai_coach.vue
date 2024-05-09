@@ -1,10 +1,11 @@
 <script setup>
 import { PoseLandmarker, FilesetResolver, DrawingUtils } from '@mediapipe/tasks-vision'
 import { onMounted, ref } from 'vue';
+import { useRouter } from 'vue-router'
 import Camera from "simple-vue-camera";
 
 
-
+const router = useRouter()
 
 
 const image = ref(null)
@@ -15,7 +16,7 @@ const lastVideoTime = ref(0)
 let poseLandmarker = null;
 var videoHeight = "";
 var videoWidth = "";
-
+var is_pause = ref(false)
 
 function renderLoop() {
   var divElement = document.getElementById("video");
@@ -34,6 +35,7 @@ function renderLoop() {
   // video.style.height = videoHeight;
   canvasElement.style.width = videoWidth;
   // video.style.width = videoWidth;
+  if(is_pause.value==false){
   if (video.currentTime !== lastVideoTime.value) {
     const poseLandmarkerResult = poseLandmarker.detectForVideo(video, startTimeMs, (result) => {
       // console.log(result)
@@ -52,6 +54,7 @@ function renderLoop() {
     // processResults(detections);
     lastVideoTime.value = video.currentTime;
   }
+}
 
 
   requestAnimationFrame(() => {
@@ -84,13 +87,27 @@ onMounted(async () => {
 var is_start_teaching_video = ref(true);
 function start_teaching_video() {
   is_start_teaching_video.value = true
+  is_pause.value = false
+
 }
 
 function start_exercise() {
   is_start_teaching_video.value = false
+  is_pause.value = false
+
+
+}
+function to_Pause() {
+  is_pause.value = true
 
 }
 
+
+
+function to_Restart() {
+  console.log('dmckd')
+  router.go('/Ai_coach')
+}
 </script>
 
 <template>
@@ -128,16 +145,35 @@ function start_exercise() {
                 <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
                 <label class="btn btn-outline-primary" for="btnradio2" @click="start_exercise()">Start</label>
 
-                <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
-                <label class="btn btn-outline-primary" for="btnradio3">Pause</label>
+                <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                <label class="btn btn-outline-primary" for="btnradio3" @click="to_Pause()">Pause</label>
 
-                <input type="radio" class="btn-check" name="btnradio" id="btnradio4" autocomplete="off">
-                <label class="btn btn-outline-primary" for="btnradio4">Restart</label>
+                <input type="radio" class="btn-check" name="btnradio" id="btnradio4" autocomplete="off"  >
+                <label class="btn btn-outline-primary" for="btnradio4" @click="to_Restart()">Restart</label>
               </div>
         </div>
 
       </div>
 
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Message</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        You paused the exercise.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" @click="start_exercise()">Continue</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 
     </div>
