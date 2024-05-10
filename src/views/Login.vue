@@ -35,7 +35,7 @@ onMounted(async () => {
           <div class="row g-0">
             <div class="col-md-7 col-lg-6 d-none d-md-block">
               <img
-                src="/public/login_picture.png"
+                src="/login_picture.png"
                 alt="login form"
                 style="border-radius: 1rem 0 0 1rem;"
                 width="100%" height="100%"
