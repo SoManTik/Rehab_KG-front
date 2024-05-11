@@ -15,7 +15,7 @@ export default defineConfig({
   },server: {
     proxy: {
       '/api': {
-            target: 'https://rehabkgback.f3202319.hkbu.app/',
+            target: 'https://rehabkgback2.f3202319.hkbu.app/',
             changeOrigin: true,
             // rewrite: (path) => path.replace(/^\/api/, ''),
       }
