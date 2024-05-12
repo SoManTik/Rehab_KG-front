@@ -56,7 +56,7 @@ const login = async () => {
                 <div class="col-md-5 col-lg-6 d-flex align-items-center">
                   <div class="card-body p-4 p-lg-5 text-black">
 
-                    <form>
+                    <form  @submit.prevent="login">
 
 
                       <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Sign into your account</h5>
@@ -74,7 +74,7 @@ const login = async () => {
                       </div>
 
                       <div class="pt-1 mb-4">
-                        <button class="btn btn-dark btn-lg btn-block" type="button" @click="login()">Login</button>
+                        <button class="btn btn-dark btn-lg btn-block" type="submit">Login</button>
                       </div>
 
                       <a class="small text-muted" href="#!">Forgot password?</a>
