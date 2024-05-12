@@ -13,7 +13,7 @@ import navbar from '../components/navbar.vue'
             <div style="padding: 5rex">
                 <div class="container ">
                     <div class="row">
-                        <div class="col-sm-12  col-md-6  col-lg-3 ">
+                        <div class="col-sm-12  col-md-6  col-lg-3 "style="margin-bottom: 3%;">
                             <div class="d-flex justify-content-center">
                                 <div class="card" style="width: 18rem;">
                                     <img src="https://tse2.mm.bing.net/th?id=OIP.VvPs5fCe9dinwDAbtmmXsQHaEK&pid=Api&P=0&h=180"
@@ -35,7 +35,7 @@ import navbar from '../components/navbar.vue'
                                 </div>
                             </div>
                         </div>
-                        <div class=" col-sm-12  col-md-6  col-lg-3 ">
+                        <div class=" col-sm-12  col-md-6  col-lg-3 " style="margin-bottom: 3%;">
                             <div class="d-flex justify-content-center">
                                 <div class="card" style="width: 18rem;">
                                     <img src="https://tse2.mm.bing.net/th?id=OIP.VvPs5fCe9dinwDAbtmmXsQHaEK&pid=Api&P=0&h=180"
@@ -57,7 +57,7 @@ import navbar from '../components/navbar.vue'
                                 </div>
                             </div>
                         </div>
-                        <div class=" col-sm-12  col-md-6  col-lg-3 ">
+                        <div class=" col-sm-12  col-md-6  col-lg-3 " style="margin-bottom: 3%;">
                             <div class="d-flex justify-content-center">
                                 <div class="card" style="width: 18rem;">
                                     <img src="https://tse2.mm.bing.net/th?id=OIP.VvPs5fCe9dinwDAbtmmXsQHaEK&pid=Api&P=0&h=180"
@@ -80,7 +80,7 @@ import navbar from '../components/navbar.vue'
                             </div>
                         </div>
 
-                        <div class=" col-sm-12  col-md-6  col-lg-3 ">
+                        <div class=" col-sm-12  col-md-6  col-lg-3 "  style="margin-bottom: 3%;">
                             <div class="d-flex justify-content-center">
                                 <div class="card" style="width: 18rem;">
                                     <img src="https://tse2.mm.bing.net/th?id=OIP.VvPs5fCe9dinwDAbtmmXsQHaEK&pid=Api&P=0&h=180"
@@ -104,7 +104,7 @@ import navbar from '../components/navbar.vue'
                         </div>
 
                     </div>
-                    <div class="row">
+                    <div class="row" style="margin-top: 1%;">
                         <div class="d-flex justify-content-end">
                             <nav aria-label="Page navigation example">
                                 <ul class="pagination">

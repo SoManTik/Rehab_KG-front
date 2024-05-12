@@ -1,7 +1,7 @@
 <script setup>
 import { ref, onMounted, computed, watch, nextTick } from 'vue'
 import { RouterLink, useRoute, useLink, useRouter } from 'vue-router'
-
+import { jwtDecode } from "jwt-decode";
 const router = useRouter();
 const route = useRoute();
 
@@ -29,12 +29,18 @@ const login = async () => {
     alert(data.message)
   } else {
     // save token to local storage
-    localStorage.setItem('token', data.token);
+    localStorage.setItem('token', data.access_token);
+    // Get the token from local storage    
+    var token = localStorage.getItem('token');
+  
+    // decode jwt token
+    const decoded = jwtDecode(token);
+    token  = JSON.parse(decoded.sub)
+    console.log(token.user_type)
+
     router.push('/');
     alert("Welcome")
   }
-
-
 
 }
 
@@ -56,7 +62,7 @@ const login = async () => {
                 <div class="col-md-5 col-lg-6 d-flex align-items-center">
                   <div class="card-body p-4 p-lg-5 text-black">
 
-                    <form  @submit.prevent="login">
+                    <form @submit.prevent="login">
 
 
                       <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Sign into your account</h5>
