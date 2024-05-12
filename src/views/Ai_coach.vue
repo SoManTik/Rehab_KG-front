@@ -134,7 +134,7 @@ function to_Restart() {
       </div>
       <div style="margin-top: 1%;" class="row">
         <div class="d-grid gap-2 d-md-block">
-          <a href="/"><button class="btn btn-primary" type="button">
+          <a href="/ExerciseTask"><button class="btn btn-primary" type="button">
             < Back</button></a>
 
               <div class="btn-group" role="group" aria-label="Basic radio toggle button group" style="margin-left: 1%;">
